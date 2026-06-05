@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espacios — Sistema de Reservas</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f0f4f8; color: #1a202c; min-height: 100vh; }
+    header { background: #2b6cb0; color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { font-size: 1.25rem; }
+    nav a, nav button.btn-nav { color: #bee3f8; text-decoration: none; background: none; border: none; cursor: pointer; font-size: .95rem; font-family: inherit; padding: 0; }
+    nav a:hover, nav button.btn-nav:hover { color: #fff; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .card { background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.1); padding: 1.5rem 2rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; color: #2d3748; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th { text-align: left; padding: .5rem .75rem; background: #ebf8ff; color: #2b6cb0; border-bottom: 2px solid #bee3f8; }
+    td { padding: .5rem .75rem; border-bottom: 1px solid #e2e8f0; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f7fafc; }
+    .empty { color: #718096; font-style: italic; padding: 1rem 0; text-align: center; }
+    label { display: block; font-size: .85rem; color: #4a5568; margin-bottom: .25rem; margin-top: .75rem; }
+    input, textarea { width: 100%; padding: .45rem .75rem; border: 1px solid #cbd5e0; border-radius: 4px; font-size: .9rem; font-family: inherit; }
+    input:focus, textarea:focus { outline: none; border-color: #4299e1; box-shadow: 0 0 0 2px #bee3f8; }
+    .btn { display: inline-block; margin-top: 1rem; padding: .5rem 1.2rem; background: #2b6cb0; color: #fff; border: none; border-radius: 4px; font-size: .9rem; cursor: pointer; }
+    .btn:hover { background: #2c5282; }
+    .error { background: #fff5f5; color: #c53030; border-left: 3px solid #fc8181; padding: .65rem .9rem; border-radius: 4px; margin-bottom: .75rem; font-size: .875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📅 Sistema de Reservas</h1>
+    $nav
+  </header>
+  <main>
+    $error_block
+    <div class="card">
+      <h2>Espacios disponibles</h2>
+      <table>
+        <thead>
+          <tr><th>Nombre</th><th>Descripción</th><th>Capacidad</th></tr>
+        </thead>
+        <tbody>
+          $filas
+        </tbody>
+      </table>
+    </div>
+    $form_crear
+  </main>
+</body>
+</html>

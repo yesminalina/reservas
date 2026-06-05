@@ -1,0 +1,20 @@
+# Entorno y secretos
+.env
+.venv/
+venv/
+
+# Bytecode Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Artefactos de pruebas de carga
+resultados_carga*
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Distribuciones / empaquetados
+dist/
+build/
+*.egg-info/

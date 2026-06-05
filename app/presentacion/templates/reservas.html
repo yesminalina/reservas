@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis reservas — Sistema de Reservas</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f0f4f8; color: #1a202c; min-height: 100vh; }
+    header { background: #2b6cb0; color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { font-size: 1.25rem; }
+    nav a, nav button.btn-nav { color: #bee3f8; text-decoration: none; background: none; border: none; cursor: pointer; font-size: .95rem; font-family: inherit; padding: 0; }
+    nav a:hover, nav button.btn-nav:hover { color: #fff; }
+    main { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+    .card { background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.1); padding: 1.5rem 2rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; color: #2d3748; }
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    th { text-align: left; padding: .5rem .75rem; background: #ebf8ff; color: #2b6cb0; border-bottom: 2px solid #bee3f8; }
+    td { padding: .5rem .75rem; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f7fafc; }
+    .badge-activa   { background: #c6f6d5; color: #276749; border-radius: 4px; padding: 2px 8px; font-size: .78rem; }
+    .badge-cancelada{ background: #fed7d7; color: #9b2c2c; border-radius: 4px; padding: 2px 8px; font-size: .78rem; }
+    .btn-cancelar { padding: .3rem .7rem; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-size: .8rem; cursor: pointer; }
+    .btn-cancelar:hover { background: #c53030; }
+    label { display: block; font-size: .85rem; color: #4a5568; margin-bottom: .25rem; margin-top: .75rem; }
+    input, select { width: 100%; padding: .45rem .75rem; border: 1px solid #cbd5e0; border-radius: 4px; font-size: .9rem; font-family: inherit; }
+    input:focus, select:focus { outline: none; border-color: #4299e1; box-shadow: 0 0 0 2px #bee3f8; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn { display: inline-block; margin-top: 1rem; padding: .5rem 1.2rem; background: #2b6cb0; color: #fff; border: none; border-radius: 4px; font-size: .9rem; cursor: pointer; }
+    .btn:hover { background: #2c5282; }
+    .error { background: #fff5f5; color: #c53030; border-left: 3px solid #fc8181; padding: .65rem .9rem; border-radius: 4px; margin-bottom: .75rem; font-size: .875rem; }
+    .empty { color: #718096; font-style: italic; text-align: center; padding: 1rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📅 Sistema de Reservas</h1>
+    $nav
+  </header>
+  <main>
+    <div class="card">
+      <h2>Nueva reserva</h2>
+      $error_block
+      <form method="post" action="/reservas">
+        <label for="espacio_id">Espacio</label>
+        <select id="espacio_id" name="espacio_id" required>
+          $opciones_espacios
+        </select>
+        <div class="form-row">
+          <div>
+            <label for="inicio">Inicio</label>
+            <input type="datetime-local" id="inicio" name="inicio" required>
+          </div>
+          <div>
+            <label for="fin">Fin</label>
+            <input type="datetime-local" id="fin" name="fin" required>
+          </div>
+        </div>
+        <button type="submit" class="btn">Reservar</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Mis reservas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Espacio</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          $filas
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
