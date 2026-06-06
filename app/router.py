@@ -26,7 +26,11 @@ def despachar(environ: dict):
     Busca el handler para (REQUEST_METHOD, PATH_INFO).
     Devuelve el resultado del handler o una tupla 404 si no existe ruta.
     """
-    clave = (environ["REQUEST_METHOD"], environ["PATH_INFO"])
+    # PATH_INFO puede venir vacío (p. ej. al ejecutarse como DirectoryIndex en
+    # la raíz vía CGI); en ese caso se normaliza a "/" según el estándar WSGI.
+    metodo = environ.get("REQUEST_METHOD", "GET")
+    path = environ.get("PATH_INFO") or "/"
+    clave = (metodo, path)
     handler = RUTAS.get(clave)
     if handler is None:
         return (404, "text/plain; charset=utf-8", b"404 No encontrado", [])

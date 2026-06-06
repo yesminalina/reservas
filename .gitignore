@@ -18,3 +18,8 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+# vendor/ se versiona intencionalmente (PyMySQL vendorizado para CGI).
+# Solo excluir bytecode dentro de vendor/.
+vendor/**/__pycache__/
+vendor/**/*.pyc

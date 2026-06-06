@@ -1,0 +1,6 @@
+pymysql==2.2.8
+# Paquete Python puro copiado aquí (vendorizado) porque el hosting cPanel
+# no tiene "Setup Python App" ni acceso a pip/terminal.
+# index.cgi lo añade a sys.path antes de importar la app.
+# Para actualizar: copiar la nueva carpeta pymysql/ del wheel de PyPI
+# (descomprimir PyMySQL-X.X.X-py3-none-any.whl, carpeta pymysql/).
