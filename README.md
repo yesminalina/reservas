@@ -2,7 +2,16 @@
 
 Aplicación web para reservar espacios y recursos. Monolito modular en **Python puro** (sin frameworks), con MySQL y desplegado en cPanel como aplicación WSGI ejecutada por **CGI** (sin Passenger).
 
+## Documentación
+
+| Documento | Ubicación |
+|---|---|
+| Documento técnico | [`docs/documento-técnico.pdf`](docs/documento-técnico.pdf) |
+| Diagrama de arquitectura | [`docs/diagrama-arquitectura.png`](docs/diagrama-arquitectura.png) |
+
 ## Arquitectura
+
+![Diagrama de arquitectura](docs/diagrama-arquitectura.png)
 
 ```
 Presentación  →  Lógica de negocio  →  Datos
@@ -58,7 +67,7 @@ locust -f tests/carga/locustfile.py --host http://localhost:8000 \
 
 | Método | Ruta | Descripción |
 |---|---|---|
-| GET | `/` | Redirige a `/espacios` |
+| GET | `/` | Redirige a `/espacios` (con sesión) o `/login` (sin sesión) |
 | GET/POST | `/registro` | Crear cuenta |
 | GET/POST | `/login` | Iniciar sesión |
 | POST | `/logout` | Cerrar sesión |
