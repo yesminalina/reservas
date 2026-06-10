@@ -106,9 +106,16 @@ def _clear_cookie_header() -> tuple:
 # Handlers
 # ---------------------------------------------------------------------------
 
+#@ruta("GET", "/")
+#def inicio(environ):
+#   return _redir("/espacios")
 @ruta("GET", "/")
 def inicio(environ):
-    return _redir("/espacios")
+    sesion = _usuario_actual(environ)
+    if sesion:
+        return _redir("/espacios") # Si está logueado, va a espacios
+    else:
+        return _redir("/login")    # Si no, va al login
 
 
 # --- Registro ---
